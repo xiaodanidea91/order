@@ -49,10 +49,12 @@ public class OrderEntryControllor {
         logger.info("cid = " + cid);
         logger.info("useCookie = " + useCookie);
 
+
         //判断mid cid为空的情形
         if (mid == null || mid.equalsIgnoreCase("") || mid.equalsIgnoreCase("all")) {
             mid = "%";
         }
+
         if (cid == null || cid.equalsIgnoreCase("") || cid.equalsIgnoreCase("all")) {
             cid = "%";
         }
@@ -66,6 +68,7 @@ public class OrderEntryControllor {
 
         //配置cookie
         if(useCookie != null && useCookie.equalsIgnoreCase("on")){
+            logger.info("if = " );
             int expire = 3600 * 24 * 30; //如果使用cookie，则将过期时间设为1个月
             logger.info("用户选择使用cookie，进入使用cookies的控制逻辑！");
             Cookie ckUseCookie = new Cookie("ckUseCookie","on");
@@ -76,6 +79,7 @@ public class OrderEntryControllor {
             response.addCookie(ckUseCookie);
             response.addCookie(ckCid);
         }else{
+            logger.info("else = " );
             int expire = -1; //如果使用cookie，则将过期时间设为-1 控制该cookie立刻过期
             logger.info("用户没有选择使用cookie，进入不使用cookies的控制逻辑！");
             Cookie ckUseCookie =new Cookie("ckUseCookie","");
